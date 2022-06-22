@@ -1,0 +1,37 @@
+{
+    "imageType": "Managed",
+    "baseImage": "/ContosoIT/Windows11Enterprise-SecurityBase/Latest",
+    "SKU": [
+        {
+            "vmSize": "16_Core_64_GB",
+            "osDiskSizeGB": "512"
+        }
+    ],
+    "artifacts": [
+        {
+            "Name": "Clone-Repository",
+            "Parameters": {
+                "type": "GitHub",
+                "remoteURI": "https:://dev.azure.com//contoso//openrct"
+            }
+        },
+        {
+            "Name": "Initialize-Repository",
+            "Parameters": {}
+        },
+        {
+            "Name": "VisualStudio",
+            "Parameters": {
+                "versionRange": "[17.0,)",
+                "sku": "Enterprise",
+                "installationtype": "FullInstall"
+            }
+        },
+        {
+            "Name": "Common-Developer-Settings",
+            "ExecutionStage": "Post-Provisioning",
+            "RunAs": "User",
+            "Parameters": { }
+        }
+    ]
+}
